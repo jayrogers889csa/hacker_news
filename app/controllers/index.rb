@@ -8,22 +8,42 @@ get '/sign_in' do
   erb :sign_in
 end
 
+get '/create_new_account' do
+
+  erb :create_new_account
+end
+
+get '/sign_out' do
+
+  # session[:user_id] = nil
+  session.clear
+
+  redirect to ('/')
+end
+
 post '/sign_in' do
 
-  user = User.find_by(params[:user][:username])
+  user = User.find_by(params[:username])
 
   if user && user.authenticate(params[:user][:password])
     session[:user_id] = user.id
     redirect to ('/')
   else
     @errors = {:Invalid => ["Incorrect Login"]}
-    erb: 'sign_in'
+    erb :sign_in
   end
 end
 
-post '/sign_out' do
+post '/create_new_account' do
 
-  session[:user_id] = nil
+  user = User.new(params[:user])
 
-  redirect to ('/')
+  if user.save
+    session[:user_id] = user.id
+    redirect to ('/')
+  else
+    @errors = user.errors.messages
+    erb :create_new_account
+  end
 end
+

@@ -1,14 +1,17 @@
+<a href="/">Home</a>
+
 <div class="container">
   <h1>Please give your login information!</h1>
   <p>Thank you!</p>
 
- <form action="/user/sign_in" method="POST" id="sign_in">
-    <span class="input-group-addon">Email</span>
+ <form action="/sign_in" method="POST" id="sign_in">
     <label>Username</label>
-    <input type="text" class="form-control" placeholder="Username" name="user[username]">
-  </div>
-  <div class="input-group input-group-lg edit-form">
+    <input type="text" placeholder="Username" name="user[username]">
+    <br>
+    <br>
     <label>Password</label>
     <input type="password" placeholder="Password" name="user[password]">
-  </div>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
 </div>
