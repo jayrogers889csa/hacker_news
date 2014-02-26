@@ -2,5 +2,14 @@
   <h1>Welcome to Hacker News!</h1>
   <p>Hack Away!</p>
 
-  <% if post.any? %>
+  <% if session[:user_id] != nil %>
+    <button><a href="/sign_in">Sign In</a></button>
+  <% else %>
+    <button><a href="/sign_out">Sign Out</a></button>
+  <% end %>
+  <% if Post.any? %>
+    <% Post.all do |post| %>
+      <h2><%= post.content %></h2>
+      <% end %>
+  <% end %>
 </div>
