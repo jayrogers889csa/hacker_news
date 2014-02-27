@@ -22,7 +22,7 @@
 <div class="posts">
   <h1>Posts</h1>
   <% Post.all.each_with_index do |post, index| %>
-    <h2><%=index + 1%>. <%= post.title %></h2>
+    <h2><%=index + 1%>. <%= post.title %>  <button id="up_vote">^</button></h2>
     <h5><a href="<%= post.url %>"><%= post.url %></a></h5>
     <h6><a href="/show_posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></h6>
     <h6>Created: <%= post.creation_time %> seconds ago</h6>

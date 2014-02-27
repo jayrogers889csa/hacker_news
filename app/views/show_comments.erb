@@ -23,7 +23,7 @@
   <% @post.comments.each_with_index do |comment, index| %>
       <h2><%=index + 1%>. <%= User.where(id: "#{comment.user_id}")[0].username %></h2>
       <h5>Created at: <%= comment.created_at %></a></h5>
-      <h6><%= comment.content %></h6>
+      <h6><%= comment.content %> <button id="up_vote">^</button></h6>
       <br>
     <% end %>
 </div>
