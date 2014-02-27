@@ -1,3 +1,9 @@
+<div class = "welcome">
+  <% if session[:user_id] != nil %>
+    <h2>Hello, <%= current_user.username %></h2>
+  <% end %>
+</div>
+
 <div class="container">
   <h1>Welcome to Hacker News!</h1>
   <p>Hack Away!</p>
@@ -8,11 +14,20 @@
   <% else %>
     <button><a href="/sign_out">Sign Out</a></button>
     <button><a href="/new_post">Create New Post</a></button>
-    <button><a href="/my_posts">My Posts</a></button>
-  <% end %>
-  <% if Post.any? %>
-    <% Post.all do |post| %>
-      <h2><%= post.content %></h2>
-      <% end %>
+    <button><a href="/my_posts/<%=current_user.id%>">My Posts</a></button>
+    <button><a href="/comments/user/<%=current_user.id%>">My Comments</a></button>
   <% end %>
 </div>
+
+<div class="posts">
+  <h1>Posts</h1>
+  <% Post.all.each_with_index do |post, index| %>
+    <h2><%=index + 1%>. <%= post.title %></h2>
+    <h5><a href="<%= post.url %>"><%= post.url %></a></h5>
+    <h6><a href="/show_posts/<%= post.user_id %>"><%= User.find(post.user_id).username %></a></h6>
+    <h6>Created: <%= post.creation_time %> seconds ago</h6>
+    <h6><a href="/comments/<%= post.id %>"><%= post.comments.count %> comments</a></h6>
+    <br>
+  <% end %>
+</div>
+

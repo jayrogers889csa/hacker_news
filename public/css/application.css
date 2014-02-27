@@ -4,6 +4,27 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
+.posts {
+  text-align: center;
+}
+
+.comments {
+  text-align: center;
+}
+
+.welcome h2 {
+  text-align: left
+}
+
 th {
   text-align: left;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
 }

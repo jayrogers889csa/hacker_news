@@ -1,0 +1,16 @@
+<a href="/">Home</a>
+
+<h2><%=current_user.username %>'s Comments</h2>
+
+<div class="posts">
+  <h1>Comments</h1>
+  <% @comments.each_with_index do |comment, index| %>
+   <% post = Post.where(id: comment.post_id)[0] %>
+    <h2><%=index + 1%>. Post: <%= post.title %>
+    <h5><a href="<%= post.url %>"><%= post.url %></a></h5>
+    <h4><%= comment.content %></h4>
+    <h6>Created: <%= comment.created_at %></h6>
+    <br>
+
+  <% end %>
+</div>

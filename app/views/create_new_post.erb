@@ -1,0 +1,18 @@
+<a href="/">Home</a>
+
+<div class="container">
+  <h1>Please give your post information!</h1>
+  <p>Thank you!</p>
+
+ <form action="/create_new_post/<%= current_user.id %>" method="POST" id="new_post">
+    <label>Title</label>
+    <input type="text" placeholder="Title" name="post[title]">
+    <br>
+    <br>
+    <label>URL</label>
+    <input type="text" placeholder="URL" name="post[url]">
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</div>
